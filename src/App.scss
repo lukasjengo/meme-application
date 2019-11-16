@@ -85,10 +85,13 @@ body {
 
 .btn {
   font: inherit;
+  display: inline-block;
+  background: khaki;
   font-size: 1.5rem;
   padding: 1rem 2rem;
   border: none;
   border-radius: 3px;
+  cursor: pointer;
 }
 
 .visible {
@@ -116,4 +119,34 @@ body {
     border-top-color: black;
     animation: rotate 1s ease-in-out infinite;
   }
+}
+
+.meme-list {
+  display: flex;
+  list-style: none;
+  max-width: 60rem;
+  overflow: auto;
+
+  &__item {
+    border: 1px solid black;
+    &:not(:first-child) {
+      margin-left: 1rem;
+    }
+  }
+  &__img {
+    display: block;
+    width: 10rem;
+    height: 10rem;
+    object-fit: cover;
+  }
+}
+
+// Resets
+input[type='file'] {
+  display: none;
+}
+
+// Utilities
+.u-ml-1 {
+  margin-left: 1rem;
 }

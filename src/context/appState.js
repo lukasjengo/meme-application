@@ -13,6 +13,7 @@ import {
   GENERATE_MEME_SUCCESS,
   GENERATE_MEME_FAILURE,
   SET_TEXT,
+  SET_CURRENT_MEME,
 } from './types';
 
 const AppState = props => {
@@ -29,6 +30,7 @@ const AppState = props => {
       topText: '',
       bottomText: '',
     },
+    currentMeme: null,
   };
   const [state, dispatch] = useReducer(AppReducer, initialState);
 
@@ -60,15 +62,21 @@ const AppState = props => {
     dispatch({ type: SET_TEXT, payload: { textType, text } });
   };
 
+  const setCurrentMeme = memeUrl => {
+    dispatch({ type: SET_CURRENT_MEME, payload: memeUrl });
+  };
+
   return (
     <AppContext.Provider
       value={{
         fetchedMemes: state.fetchedMemes,
         generatedMeme: state.generatedMeme,
         inputText: state.inputText,
+        currentMeme: state.currentMeme,
         fetchMemes,
         generateMeme,
         setText,
+        setCurrentMeme,
       }}
     >
       {props.children}

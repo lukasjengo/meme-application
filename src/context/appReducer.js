@@ -6,6 +6,7 @@ import {
   GENERATE_MEME_SUCCESS,
   GENERATE_MEME_FAILURE,
   SET_TEXT,
+  SET_CURRENT_MEME,
 } from './types';
 
 export default (state, action) => {
@@ -65,6 +66,11 @@ export default (state, action) => {
           ...state.inputText,
           [action.payload.textType]: action.payload.text,
         },
+      };
+    case SET_CURRENT_MEME:
+      return {
+        ...state,
+        currentMeme: action.payload,
       };
     default:
       return {
