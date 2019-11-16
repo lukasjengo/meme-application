@@ -1,26 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useRef } from 'react';
+import './App.scss';
 
-function App() {
+import AppState from 'context/appState';
+
+import Meme from 'components/meme/Meme';
+import MemeControls from 'components/memeControls/MemeControls';
+
+const App = () => {
+  const memeNode = useRef(null);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppState>
+      <main className="main-container">
+        <Meme ref={memeNode} />
+        <MemeControls ref={memeNode} />
+      </main>
+    </AppState>
   );
-}
+};
 
 export default App;
