@@ -14,6 +14,7 @@ import {
   GENERATE_MEME_FAILURE,
   SET_TEXT,
   SET_CURRENT_MEME,
+  SET_CURRENT_STYLES,
 } from './types';
 
 const AppState = props => {
@@ -31,6 +32,10 @@ const AppState = props => {
       bottomText: '',
     },
     currentMeme: null,
+    currentStyles: {
+      backgroundColor: '',
+      color: '',
+    },
   };
   const [state, dispatch] = useReducer(AppReducer, initialState);
 
@@ -66,6 +71,10 @@ const AppState = props => {
     dispatch({ type: SET_CURRENT_MEME, payload: memeUrl });
   };
 
+  const setCurrentStyles = (styleType, value) => {
+    dispatch({ type: SET_CURRENT_STYLES, payload: { styleType, value } });
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -73,10 +82,12 @@ const AppState = props => {
         generatedMeme: state.generatedMeme,
         inputText: state.inputText,
         currentMeme: state.currentMeme,
+        currentStyles: state.currentStyles,
         fetchMemes,
         generateMeme,
         setText,
         setCurrentMeme,
+        setCurrentStyles,
       }}
     >
       {props.children}

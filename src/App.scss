@@ -87,6 +87,8 @@ body {
   font: inherit;
   display: inline-block;
   background: khaki;
+  color: black;
+  text-decoration: none;
   font-size: 1.5rem;
   padding: 1rem 2rem;
   border: none;
@@ -149,4 +151,20 @@ input[type='file'] {
 // Utilities
 .u-ml-1 {
   margin-left: 1rem;
+}
+
+// scrollbar
+::-webkit-scrollbar {
+  width: 1rem;
+  height: 1rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #666;
+  border-radius: 2rem;
+}
+
+::-webkit-scrollbar-track {
+  background: #ddd;
+  border-radius: 2rem;
 }

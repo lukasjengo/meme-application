@@ -3,6 +3,7 @@ import AppContext from 'context/appContext';
 
 import CustomTextInput from 'components/customTextInput/CustomTextInput';
 import SelectMemeList from 'components/selectMemeList/SelectMemeList';
+import ColorPicker from 'components/colorPicker/ColorPicker';
 
 const MemeControls = forwardRef((props, ref) => {
   const appContext = useContext(AppContext);
@@ -48,6 +49,10 @@ const MemeControls = forwardRef((props, ref) => {
         />
         Upload your meme
       </label>
+      <ColorPicker styleType="backgroundColor">
+        Pick background color
+      </ColorPicker>
+      <ColorPicker styleType="color">Pick font color</ColorPicker>
     </div>
   );
 });

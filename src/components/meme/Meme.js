@@ -16,12 +16,20 @@ const Meme = forwardRef((props, ref) => {
       <div
         className={`meme__text ${appContext.inputText.topText.length > 0 &&
           'visible'}`}
+        style={{
+          backgroundColor: appContext.currentStyles.backgroundColor,
+          color: appContext.currentStyles.color,
+        }}
       >
         {appContext.inputText.topText}
       </div>
       <div
         className={`meme__text ${appContext.inputText.bottomText.length > 0 &&
           'visible'}`}
+        style={{
+          backgroundColor: appContext.currentStyles.backgroundColor,
+          color: appContext.currentStyles.color,
+        }}
       >
         {appContext.inputText.bottomText}
       </div>

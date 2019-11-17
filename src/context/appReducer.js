@@ -7,6 +7,7 @@ import {
   GENERATE_MEME_FAILURE,
   SET_TEXT,
   SET_CURRENT_MEME,
+  SET_CURRENT_STYLES,
 } from './types';
 
 export default (state, action) => {
@@ -71,6 +72,14 @@ export default (state, action) => {
       return {
         ...state,
         currentMeme: action.payload,
+      };
+    case SET_CURRENT_STYLES:
+      return {
+        ...state,
+        currentStyles: {
+          ...state.currentStyles,
+          [action.payload.styleType]: action.payload.value,
+        },
       };
     default:
       return {
