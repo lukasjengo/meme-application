@@ -1,9 +1,10 @@
 import React, { useReducer } from 'react';
-
 import AppContext from './appContext';
 import AppReducer from './appReducer';
 
 import domtoimage from 'dom-to-image';
+
+import dataURItoBlob from 'utils/uriToBlob';
 
 import {
   FETCH_MEMES_REQUEST,
@@ -25,13 +26,14 @@ const AppState = props => {
     },
     generatedMeme: {
       data: null,
+      fileName: null,
       isLoading: false,
     },
+    currentMeme: null,
     inputText: {
       topText: '',
       bottomText: '',
     },
-    currentMeme: null,
     currentStyles: {
       backgroundColor: '',
       color: '',
@@ -55,11 +57,22 @@ const AppState = props => {
     try {
       dispatch({ type: GENERATE_MEME_REQUEST });
       const img = await domtoimage.toJpeg(memeNode);
-      dispatch({ type: GENERATE_MEME_SUCCESS, payload: img });
+      const blob = dataURItoBlob(img);
+      const formData = new FormData();
+      formData.append('file', blob);
+      const res = await fetch(`${process.env.REACT_APP_SERVER_URL}/api/meme`, {
+        method: 'POST',
+        body: formData,
+      });
+      const data = await res.json();
+      dispatch({
+        type: GENERATE_MEME_SUCCESS,
+        payload: { data: img, fileName: data.filename },
+      });
     } catch (err) {
       dispatch({ type: GENERATE_MEME_FAILURE });
       // Display error
-      console.error('something whent wrong', err);
+      console.error('something went wrong', err);
     }
   };
 

@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, forwardRef } from 'react';
 import AppContext from 'context/appContext';
 
+import MemeText from 'components/memeText/MemeText';
+
 const Meme = forwardRef((props, ref) => {
   const appContext = useContext(AppContext);
 
@@ -12,27 +14,19 @@ const Meme = forwardRef((props, ref) => {
 
   return (
     <div className="meme" ref={ref}>
-      <img className="meme__image" src={appContext.currentMeme} alt="" />
-      <div
-        className={`meme__text ${appContext.inputText.topText.length > 0 &&
-          'visible'}`}
-        style={{
-          backgroundColor: appContext.currentStyles.backgroundColor,
-          color: appContext.currentStyles.color,
-        }}
-      >
-        {appContext.inputText.topText}
-      </div>
-      <div
-        className={`meme__text ${appContext.inputText.bottomText.length > 0 &&
-          'visible'}`}
-        style={{
-          backgroundColor: appContext.currentStyles.backgroundColor,
-          color: appContext.currentStyles.color,
-        }}
-      >
-        {appContext.inputText.bottomText}
-      </div>
+      <img className="meme__image" src={appContext.currentMeme} alt="meme" />
+      <MemeText
+        inputText={appContext.inputText}
+        currentStyles={appContext.currentStyles}
+        positionY={0}
+        type="topText"
+      />
+      <MemeText
+        inputText={appContext.inputText}
+        currentStyles={appContext.currentStyles}
+        positionY={300}
+        type="bottomText"
+      />
     </div>
   );
 });

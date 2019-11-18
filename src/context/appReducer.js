@@ -48,7 +48,8 @@ export default (state, action) => {
       return {
         ...state,
         generatedMeme: {
-          data: action.payload,
+          data: action.payload.data,
+          fileName: action.payload.fileName,
           isLoading: false,
         },
       };
@@ -72,6 +73,14 @@ export default (state, action) => {
       return {
         ...state,
         currentMeme: action.payload,
+        generatedMeme: {
+          data: null,
+          fileName: null,
+        },
+        inputText: {
+          topText: '',
+          bottomText: '',
+        },
       };
     case SET_CURRENT_STYLES:
       return {
