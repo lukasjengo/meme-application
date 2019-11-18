@@ -1,5 +1,4 @@
 import React, { useRef } from 'react';
-import './App.scss';
 
 import AppState from 'context/appState';
 

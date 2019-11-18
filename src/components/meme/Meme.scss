@@ -1,0 +1,9 @@
+.meme {
+  position: relative;
+
+  &__image {
+    display: block;
+    max-width: 57rem;
+    max-height: 57rem;
+  }
+}

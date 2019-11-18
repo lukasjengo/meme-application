@@ -1,0 +1,28 @@
+.color-picker {
+  display: flex;
+  align-items: center;
+
+  &__btn {
+    padding: 1rem;
+    border: 1px solid $color-black;
+    border-radius: 50%;
+  }
+
+  &__text {
+    font-size: 1.2rem;
+    margin-right: 0.5rem;
+  }
+
+  &__popover {
+    position: absolute;
+    z-index: 2;
+  }
+
+  &__cover {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+}

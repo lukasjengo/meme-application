@@ -1,3 +1,28 @@
+/**************
+** VARIABLES***
+**************/
+
+$color-primary: #6b48ff;
+$color-primary-dark: #5d37ff;
+
+$color-secondary: #1ee3cf;
+
+$color-white: #f2f4f6;
+$color-black: #212121;
+
+$color-danger: #ff487e;
+$color-success: #64e291;
+
+/***************
+** ANIMATIONS ***
+**********/
+
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 /**********
 ** RESET***
 **********/
@@ -19,134 +44,57 @@ body {
   font-family: 'Lato', sans-serif;
   font-weight: 400;
   line-height: 1.7;
+  color: $color-black;
 }
+
+input[type='file'] {
+  display: none;
+}
+
+/************
+** LAYOUT ***
+**********/
 
 .main-container {
   display: flex;
+  margin: 2rem 0;
   flex-direction: column;
   align-items: center;
 }
 
-.meme {
-  position: relative;
+.color-picker-container {
+  display: flex;
+  margin: 2rem 0;
 
-  &__image {
-    display: block;
-    max-width: 70rem;
-    max-height: 70rem;
-  }
-
-  &__text {
-    position: absolute;
-    visibility: hidden;
-    overflow: hidden;
-    width: 100%;
-    padding: 1.2rem 2rem;
-    overflow-wrap: break-word;
-    font-size: 30px;
-    font-weight: 700;
-    line-height: 1.1;
-    text-align: center;
-    color: white;
-    background-color: black;
-    z-index: 500;
-
-    &:nth-of-type(1) {
-      top: 0;
-      left: 0;
-    }
-
-    &:nth-of-type(2) {
-      top: 100%;
-      left: 0;
-    }
+  .color-picker {
+    margin-right: 1.5rem;
   }
 }
 
-.meme-controls {
-  margin-top: 5rem;
-}
-
-.input-group {
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
-
-  label {
-    margin-bottom: 0.5rem;
-    font-weight: 600;
-  }
-
-  input {
-    display: block;
-    width: 40rem;
-    font: inherit;
-    padding: 2px 1rem;
-  }
-}
+/************
+** BUTTONS ***
+**********/
 
 .btn {
   font: inherit;
   display: inline-block;
-  background: khaki;
-  color: black;
   text-decoration: none;
   font-size: 1.5rem;
   padding: 1rem 2rem;
-  border: none;
   border-radius: 3px;
+  border: none;
   cursor: pointer;
-}
 
-.visible {
-  visibility: visible !important;
-}
+  transition: all 0.2s;
 
-@keyframes rotate {
-  to {
-    transform: rotate(360deg);
-  }
-}
+  &--primary {
+    background: $color-primary;
+    color: $color-white;
 
-.spinner {
-  display: flex;
-  justify-content: center;
-  margin: 5rem 0;
-
-  div {
-    display: inline-block;
-    text-align: center;
-    width: 5rem;
-    height: 5rem;
-    border: 3px solid rgba(0, 0, 0, 0.3);
-    border-radius: 50%;
-    border-top-color: black;
-    animation: rotate 1s ease-in-out infinite;
-  }
-}
-
-.meme-list {
-  display: flex;
-  list-style: none;
-  max-width: 60rem;
-  overflow: auto;
-
-  &__item {
-    border: 1px solid black;
-    &:not(:first-child) {
-      margin-left: 1rem;
+    &:hover {
+      background: $color-primary-dark;
     }
   }
-  &__img {
-    display: block;
-    width: 10rem;
-    height: 10rem;
-    object-fit: cover;
-  }
-}
-
-// Resets
-input[type='file'] {
-  display: none;
 }
 
 // Utilities
@@ -154,18 +102,6 @@ input[type='file'] {
   margin-left: 1rem;
 }
 
-// scrollbar
-::-webkit-scrollbar {
-  width: 1rem;
-  height: 1rem;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #666;
-  border-radius: 2rem;
-}
-
-::-webkit-scrollbar-track {
-  background: #ddd;
-  border-radius: 2rem;
+.visible {
+  visibility: visible !important;
 }

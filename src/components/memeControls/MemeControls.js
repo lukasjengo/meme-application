@@ -25,12 +25,16 @@ const MemeControls = forwardRef((props, ref) => {
       <SelectMemeList fetchedMemes={appContext.fetchedMemes} />
       <CustomTextInput name="topText" label="Top text" />
       <CustomTextInput name="bottomText" label="Bottom text" />
-      <button className="btn" onClick={onClick}>
+      <div className="color-picker-container">
+        <ColorPicker styleType="backgroundColor">Background color</ColorPicker>
+        <ColorPicker styleType="color">Font color</ColorPicker>
+      </div>
+      <button className="btn btn--primary" onClick={onClick}>
         {appContext.generatedMeme.isLoading ? 'Loading...' : 'Generate meme'}
       </button>
       {appContext.generatedMeme.data && (
         <a
-          className="btn"
+          className="btn btn--primary"
           href={appContext.generatedMeme.data}
           alt=""
           target="_blank"
@@ -40,7 +44,7 @@ const MemeControls = forwardRef((props, ref) => {
           Download your image
         </a>
       )}
-      <label htmlFor="fileUpload" className="btn u-ml-1">
+      <label htmlFor="fileUpload" className="btn btn--primary u-ml-1">
         <input
           id="fileUpload"
           onChange={onChange}
@@ -49,10 +53,6 @@ const MemeControls = forwardRef((props, ref) => {
         />
         Upload your meme
       </label>
-      <ColorPicker styleType="backgroundColor">
-        Pick background color
-      </ColorPicker>
-      <ColorPicker styleType="color">Pick font color</ColorPicker>
     </div>
   );
 });

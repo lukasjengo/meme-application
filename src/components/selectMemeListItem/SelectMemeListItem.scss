@@ -1,0 +1,21 @@
+.meme-list {
+  &__item {
+    border: 1px solid $color-black;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &:hover {
+      border: 1px solid $color-secondary;
+    }
+
+    &:not(:first-child) {
+      margin-left: 1rem;
+    }
+  }
+  &__img {
+    display: block;
+    width: 10rem;
+    height: 10rem;
+    object-fit: cover;
+  }
+}

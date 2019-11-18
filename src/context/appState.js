@@ -35,8 +35,8 @@ const AppState = props => {
       bottomText: '',
     },
     currentStyles: {
-      backgroundColor: '',
-      color: '',
+      backgroundColor: '#000000',
+      color: '#ffffff',
     },
   };
   const [state, dispatch] = useReducer(AppReducer, initialState);
