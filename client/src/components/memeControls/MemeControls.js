@@ -35,7 +35,7 @@ const MemeControls = forwardRef((props, ref) => {
         <ColorPicker styleType="backgroundColor">Background color</ColorPicker>
         <ColorPicker styleType="color">Font color</ColorPicker>
       </div>
-      <button className="btn btn--primary" onClick={onClick}>
+      <button className="btn btn--primary u-sm-width-100" onClick={onClick}>
         {generatedMeme.isLoading ? 'Loading...' : 'Generate meme'}
       </button>
       <label htmlFor="fileUpload" className="btn btn--secondary u-ml-1">
