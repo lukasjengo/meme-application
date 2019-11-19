@@ -3,9 +3,10 @@ import AppContext from 'context/appContext';
 
 const CustomTextInput = ({ name, label }) => {
   const appContext = useContext(AppContext);
+  const { setText, inputText } = appContext;
 
   const onChange = e => {
-    appContext.setText(e.target.name, e.target.value);
+    setText(e.target.name, e.target.value);
   };
   return (
     <div className="input-group">
@@ -14,7 +15,7 @@ const CustomTextInput = ({ name, label }) => {
         type="text"
         name={name}
         id={name}
-        value={appContext.inputText[name]}
+        value={inputText[name]}
         onChange={onChange}
       />
     </div>

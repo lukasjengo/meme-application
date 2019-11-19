@@ -1,3 +1,15 @@
+/***********************
+** MEDIA QUERY MANAGER***
+**************/
+
+@mixin respond($breakpoint) {
+  @if $breakpoint == sm {
+    @media only screen and (max-width: 37.5em) {
+      @content;
+    } //600px
+  }
+}
+
 /**************
 ** VARIABLES***
 **************/
@@ -6,6 +18,7 @@ $color-primary: #6b48ff;
 $color-primary-dark: #5d37ff;
 
 $color-secondary: #1ee3cf;
+$color-secondary-dark: #1bd5c2;
 
 $color-white: #f2f4f6;
 $color-black: #212121;
@@ -37,6 +50,10 @@ $color-success: #64e291;
 
 html {
   font-size: 62.5%;
+
+  @include respond(sm) {
+    font-size: 57%;
+  }
 }
 
 body {
@@ -57,9 +74,13 @@ input[type='file'] {
 
 .main-container {
   display: flex;
-  margin: 2rem 0;
+  margin: 4rem 0;
   flex-direction: column;
   align-items: center;
+
+  @include respond(sm) {
+    margin: 0;
+  }
 }
 
 .color-picker-container {
@@ -87,6 +108,12 @@ input[type='file'] {
 
   transition: all 0.2s;
 
+  @include respond(sm) {
+    display: block;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
   &--primary {
     background: $color-primary;
     color: $color-white;
@@ -95,11 +122,24 @@ input[type='file'] {
       background: $color-primary-dark;
     }
   }
+
+  &--secondary {
+    background: $color-secondary;
+    color: $color-black;
+
+    &:hover {
+      background: $color-secondary-dark;
+    }
+  }
 }
 
 // Utilities
 .u-ml-1 {
   margin-left: 1rem;
+
+  @include respond(sm) {
+    margin-left: 0;
+  }
 }
 
 .visible {

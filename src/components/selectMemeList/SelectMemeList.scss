@@ -4,4 +4,8 @@
   max-width: 57rem;
   overflow: auto;
   margin-bottom: 2rem;
+
+  @include respond(sm) {
+    max-width: 95vw;
+  }
 }

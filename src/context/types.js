@@ -7,3 +7,5 @@ export const GENERATE_MEME_FAILURE = 'GENERATE_MEME_FAILURE';
 export const SET_TEXT = 'SET_TEXT';
 export const SET_CURRENT_MEME = 'SET_CURRENT_MEME';
 export const SET_CURRENT_STYLES = 'SET_CURRENT_STYLES';
+export const SET_ALERT = 'SET_ALERT';
+export const REMOVE_ALERT = 'REMOVE_ALERT';

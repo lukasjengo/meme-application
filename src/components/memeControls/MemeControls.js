@@ -7,22 +7,28 @@ import ColorPicker from 'components/colorPicker/ColorPicker';
 
 const MemeControls = forwardRef((props, ref) => {
   const appContext = useContext(AppContext);
+  const {
+    generateMeme,
+    setCurrentMeme,
+    fetchedMemes,
+    generatedMeme,
+  } = appContext;
 
   const onClick = e => {
-    appContext.generateMeme(ref.current);
+    generateMeme(ref.current);
   };
 
   const onChange = e => {
     if (e.target.files.length === 0) {
-      appContext.setCurrentMeme(appContext.fetchedMemes.data[1].url);
+      setCurrentMeme(fetchedMemes.data[6].url);
     } else {
-      appContext.setCurrentMeme(URL.createObjectURL(e.target.files[0]));
+      setCurrentMeme(URL.createObjectURL(e.target.files[0]));
     }
   };
 
   return (
     <div className="meme-controls">
-      <SelectMemeList fetchedMemes={appContext.fetchedMemes} />
+      <SelectMemeList />
       <CustomTextInput name="topText" label="Top text" />
       <CustomTextInput name="bottomText" label="Bottom text" />
       <div className="color-picker-container">
@@ -30,21 +36,9 @@ const MemeControls = forwardRef((props, ref) => {
         <ColorPicker styleType="color">Font color</ColorPicker>
       </div>
       <button className="btn btn--primary" onClick={onClick}>
-        {appContext.generatedMeme.isLoading ? 'Loading...' : 'Generate meme'}
+        {generatedMeme.isLoading ? 'Loading...' : 'Generate meme'}
       </button>
-      {appContext.generatedMeme.data && (
-        <a
-          className="btn btn--primary"
-          href={appContext.generatedMeme.data}
-          alt=""
-          target="_blank"
-          rel="noopener noreferrer"
-          download
-        >
-          Download your image
-        </a>
-      )}
-      <label htmlFor="fileUpload" className="btn btn--primary u-ml-1">
+      <label htmlFor="fileUpload" className="btn btn--secondary u-ml-1">
         <input
           id="fileUpload"
           onChange={onChange}
@@ -53,6 +47,34 @@ const MemeControls = forwardRef((props, ref) => {
         />
         Upload your meme
       </label>
+      {generatedMeme.data && (
+        <a
+          className="btn btn--primary u-ml-1"
+          href={generatedMeme.data}
+          alt=""
+          target="_blank"
+          rel="noopener noreferrer"
+          download
+        >
+          Download your image
+        </a>
+      )}
+      {generatedMeme.fileName && (
+        <div className="meme-info-container">
+          <label htmlFor="">Your meme link:</label>
+          <input
+            type="text"
+            value={`${process.env.REACT_APP_SERVER_URL}/uploads/${generatedMeme.fileName}`}
+            readOnly
+          />
+          <label htmlFor="">Image HTML code:</label>
+          <input
+            type="text"
+            value={`<img src="${process.env.REACT_APP_SERVER_URL}/uploads/${generatedMeme.fileName}"/>`}
+            readOnly
+          />
+        </div>
+      )}
     </div>
   );
 });

@@ -4,6 +4,7 @@ import { ChromePicker } from 'react-color';
 
 const ColorPicker = ({ styleType, children }) => {
   const appContext = useContext(AppContext);
+  const { currentStyles, setCurrentStyles } = appContext;
 
   const [displayPicker, setDisplayPicker] = useState(false);
 
@@ -18,15 +19,15 @@ const ColorPicker = ({ styleType, children }) => {
   const onChangeComplete = color => {
     const { r, g, b, a } = color.rgb;
     const rgba = `rgba(${r}, ${g}, ${b}, ${a})`;
-    appContext.setCurrentStyles(styleType, rgba);
+    setCurrentStyles(styleType, rgba);
   };
   return (
     <div>
       <div className="color-picker">
         <span className="color-picker__text">{children}</span>
         <button
-          style={{ backgroundColor: appContext.currentStyles[styleType] }}
-          className="btn color-picker__btn"
+          style={{ backgroundColor: currentStyles[styleType] }}
+          className="color-picker__btn"
           onClick={onClick}
         ></button>
       </div>
@@ -34,7 +35,7 @@ const ColorPicker = ({ styleType, children }) => {
         <div className="color-picker__popover">
           <div className="color-picker__cover" onClick={onClose} />
           <ChromePicker
-            color={appContext.currentStyles[styleType]}
+            color={currentStyles[styleType]}
             onChangeComplete={onChangeComplete}
           />
         </div>

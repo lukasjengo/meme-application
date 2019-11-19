@@ -1,0 +1,22 @@
+.alert {
+  position: fixed;
+  top: 4rem;
+  right: 4rem;
+  z-index: 9999;
+  font-size: 1.5rem;
+
+  &__item {
+    padding: 1rem 2rem;
+    margin-bottom: 1rem;
+    border-radius: 3px;
+    color: $color-black;
+  }
+
+  &__item--success {
+    background-color: $color-success;
+  }
+
+  &__item--danger {
+    background-color: $color-danger;
+  }
+}

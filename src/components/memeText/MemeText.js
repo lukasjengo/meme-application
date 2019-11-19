@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import AppContext from 'context/appContext';
 import { Rnd } from 'react-rnd';
 
-const MemeText = ({ inputText, currentStyles, positionY, type }) => {
+const MemeText = ({ positionY, type }) => {
+  const appContext = useContext(AppContext);
+  const { currentStyles, inputText } = appContext;
+
   return (
     <Rnd
       className={`meme__text ${inputText[type].length > 0 && 'visible'}`}

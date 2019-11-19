@@ -8,6 +8,8 @@ import {
   SET_TEXT,
   SET_CURRENT_MEME,
   SET_CURRENT_STYLES,
+  SET_ALERT,
+  REMOVE_ALERT,
 } from './types';
 
 export default (state, action) => {
@@ -89,6 +91,16 @@ export default (state, action) => {
           ...state.currentStyles,
           [action.payload.styleType]: action.payload.value,
         },
+      };
+    case SET_ALERT:
+      return {
+        ...state,
+        alerts: [...state.alerts, action.payload],
+      };
+    case REMOVE_ALERT:
+      return {
+        ...state,
+        alerts: state.alerts.filter(alert => alert.id !== action.payload),
       };
     default:
       return {

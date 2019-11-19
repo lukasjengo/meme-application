@@ -5,28 +5,19 @@ import MemeText from 'components/memeText/MemeText';
 
 const Meme = forwardRef((props, ref) => {
   const appContext = useContext(AppContext);
+  const { fetchMemes, setCurrentMeme, currentMeme } = appContext;
 
   useEffect(() => {
-    appContext.fetchMemes();
-    appContext.setCurrentMeme('https://i.imgflip.com/1ur9b0.jpg');
+    fetchMemes();
+    setCurrentMeme('https://i.imgflip.com/24y43o.jpg');
     //eslint-disable-next-line
   }, []);
 
   return (
     <div className="meme" ref={ref}>
-      <img className="meme__image" src={appContext.currentMeme} alt="meme" />
-      <MemeText
-        inputText={appContext.inputText}
-        currentStyles={appContext.currentStyles}
-        positionY={0}
-        type="topText"
-      />
-      <MemeText
-        inputText={appContext.inputText}
-        currentStyles={appContext.currentStyles}
-        positionY={300}
-        type="bottomText"
-      />
+      <img className="meme__image" src={currentMeme} alt="meme" />
+      <MemeText positionY={0} type="topText" />
+      <MemeText positionY={200} type="bottomText" />
     </div>
   );
 });

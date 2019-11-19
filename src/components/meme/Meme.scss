@@ -5,5 +5,9 @@
     display: block;
     max-width: 57rem;
     max-height: 57rem;
+
+    @include respond(sm) {
+      max-width: 100%;
+    }
   }
 }

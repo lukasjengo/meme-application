@@ -6,15 +6,16 @@ import SelectMemeListItem from 'components/selectMemeListItem/SelectMemeListItem
 
 const SelectMemeList = () => {
   const appContext = useContext(AppContext);
+  const { setCurrentMeme, fetchedMemes } = appContext;
 
   const onClick = e => {
-    appContext.setCurrentMeme(e.target.src);
+    setCurrentMeme(e.target.src);
   };
-  return appContext.fetchedMemes.isLoading ? (
+  return fetchedMemes.isLoading ? (
     <Spinner />
   ) : (
     <ul className="meme-list">
-      {appContext.fetchedMemes.data.map((meme, index) =>
+      {fetchedMemes.data.map((meme, index) =>
         index < 15 ? (
           <SelectMemeListItem
             onClick={onClick}
