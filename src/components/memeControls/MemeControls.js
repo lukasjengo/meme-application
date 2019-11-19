@@ -11,7 +11,7 @@ const MemeControls = forwardRef((props, ref) => {
     generateMeme,
     setCurrentMeme,
     fetchedMemes,
-    generatedMeme,
+    generatedMeme
   } = appContext;
 
   const onClick = e => {

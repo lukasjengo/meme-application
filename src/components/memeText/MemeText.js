@@ -11,12 +11,12 @@ const MemeText = ({ positionY, type }) => {
       className={`meme__text ${inputText[type].length > 0 && 'visible'}`}
       style={{
         backgroundColor: currentStyles.backgroundColor,
-        color: currentStyles.color,
+        color: currentStyles.color
       }}
       default={{
         x: 0,
         y: positionY,
-        width: '100%',
+        width: '100%'
       }}
       bounds="parent"
     >

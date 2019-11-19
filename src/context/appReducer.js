@@ -9,7 +9,7 @@ import {
   SET_CURRENT_MEME,
   SET_CURRENT_STYLES,
   SET_ALERT,
-  REMOVE_ALERT,
+  REMOVE_ALERT
 } from './types';
 
 export default (state, action) => {
@@ -19,32 +19,32 @@ export default (state, action) => {
         ...state,
         fetchedMemes: {
           ...state.fetchedMemes,
-          isLoading: true,
-        },
+          isLoading: true
+        }
       };
     case FETCH_MEMES_SUCCESS:
       return {
         ...state,
         fetchedMemes: {
           data: action.payload,
-          isLoading: false,
-        },
+          isLoading: false
+        }
       };
     case FETCH_MEMES_FAILURE:
       return {
         ...state,
         fetchedMemes: {
           ...state.fetchedMemes,
-          isLoading: false,
-        },
+          isLoading: false
+        }
       };
     case GENERATE_MEME_REQUEST:
       return {
         ...state,
         generatedMeme: {
           ...state.generatedMeme,
-          isLoading: true,
-        },
+          isLoading: true
+        }
       };
     case GENERATE_MEME_SUCCESS:
       return {
@@ -52,24 +52,24 @@ export default (state, action) => {
         generatedMeme: {
           data: action.payload.data,
           fileName: action.payload.fileName,
-          isLoading: false,
-        },
+          isLoading: false
+        }
       };
     case GENERATE_MEME_FAILURE:
       return {
         ...state,
         generatedMeme: {
           ...state.generatedMeme,
-          isLoading: false,
-        },
+          isLoading: false
+        }
       };
     case SET_TEXT:
       return {
         ...state,
         inputText: {
           ...state.inputText,
-          [action.payload.textType]: action.payload.text,
-        },
+          [action.payload.textType]: action.payload.text
+        }
       };
     case SET_CURRENT_MEME:
       return {
@@ -77,34 +77,34 @@ export default (state, action) => {
         currentMeme: action.payload,
         generatedMeme: {
           data: null,
-          fileName: null,
+          fileName: null
         },
         inputText: {
           topText: '',
-          bottomText: '',
-        },
+          bottomText: ''
+        }
       };
     case SET_CURRENT_STYLES:
       return {
         ...state,
         currentStyles: {
           ...state.currentStyles,
-          [action.payload.styleType]: action.payload.value,
-        },
+          [action.payload.styleType]: action.payload.value
+        }
       };
     case SET_ALERT:
       return {
         ...state,
-        alerts: [...state.alerts, action.payload],
+        alerts: [...state.alerts, action.payload]
       };
     case REMOVE_ALERT:
       return {
         ...state,
-        alerts: state.alerts.filter(alert => alert.id !== action.payload),
+        alerts: state.alerts.filter(alert => alert.id !== action.payload)
       };
     default:
       return {
-        ...state,
+        ...state
       };
   }
 };

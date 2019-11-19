@@ -18,30 +18,30 @@ import {
   SET_CURRENT_MEME,
   SET_CURRENT_STYLES,
   SET_ALERT,
-  REMOVE_ALERT,
+  REMOVE_ALERT
 } from './types';
 
 const AppState = props => {
   const initialState = {
     fetchedMemes: {
       data: [],
-      isLoading: false,
+      isLoading: false
     },
     generatedMeme: {
       data: null,
       fileName: null,
-      isLoading: false,
+      isLoading: false
     },
     currentMeme: null,
     inputText: {
       topText: '',
-      bottomText: '',
+      bottomText: ''
     },
     currentStyles: {
       backgroundColor: '#000000',
-      color: '#ffffff',
+      color: '#ffffff'
     },
-    alerts: [],
+    alerts: []
   };
   const [state, dispatch] = useReducer(AppReducer, initialState);
 
@@ -74,12 +74,12 @@ const AppState = props => {
       formData.append('file', blob);
       const res = await fetch(`${process.env.REACT_APP_SERVER_URL}/api/meme`, {
         method: 'POST',
-        body: formData,
+        body: formData
       });
       const data = await res.json();
       dispatch({
         type: GENERATE_MEME_SUCCESS,
-        payload: { data: img, fileName: data.filename },
+        payload: { data: img, fileName: data.filename }
       });
       setAlert('Meme successfully generated', 'success');
     } catch (err) {
@@ -114,7 +114,7 @@ const AppState = props => {
         setText,
         setCurrentMeme,
         setCurrentStyles,
-        setAlert,
+        setAlert
       }}
     >
       {props.children}
